@@ -1,0 +1,54 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Bootstrap demo</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
+  </head>
+  <body>
+  <h1 class=" text-center style=color: black">Crop Yield Production Per Country</h1>
+  <h1 class="text-center" style="color: black; font-size:20px;" > (A Machine Learning Based Prediction Model)</h1>
+
+    <div class="container mt-4 my-4" style="background:royalblue;color:white;border-radius:20px;">
+      <h1 class=" text-center" style="color: black">Enter Crop Features Here</h1>
+      <form action="/predict" method="POST">
+        <div class="form-group">
+          <label for="Year"> Year</label>
+          <input type ="number" class="form-control" name="Year" step="any" placeholder="e.g. any year">
+        </div>
+        <div class="form-group">
+          <label for="average_rain_fall_mm_per_year"> average_rain_fall_mm_per_year</label>
+          <input type ="number" class="form-control" name="average_rain_fall_mm_per_year" step="any" placeholder="e.g. any value">
+        </div>
+        <div class="form-group">
+          <label for="pesticides_tonnes"> pesticides_tonnes</label>
+          <input type ="number" class="form-control" name="pesticides_tonnes" step="any" placeholder="e.g. any value">
+        </div>
+        <div class="form-group">
+          <label for="avg_temp"> avg_temp</label>
+          <input type ="number" class="form-control" name="avg_temp" step="any" placeholder="e.g. any temp">
+        </div>
+        <div class="form-group">
+          <label for="Area"> Area</label>
+          <input type ="text" class="form-control" name="Area" step="any" placeholder="e.g. India, Albania, Denmark, Egypt, Finland, Germany etc(Any country with capital first letter) * This model considers 101 different countries">
+        </div>
+        <div class="form-group">
+          <label for="Item"> Item</label>
+          <input type ="text" class="form-control" name="Item" step="any" placeholder="enter any one from these crop items: Maize, Potatoes, (Rice, paddy), Sorghum, Soybeans, Wheat, Cassava, Sweet potatoes, Yams, Plantains and others">
+        </div>
+
+        <button type="submit" class="btn btn-danger bgn-lg  mt-4 my-4" style="background-color: darkorange">Predict</button>
+      </form>
+
+      {% if predicted_value %}
+      <h1 class="text-center " style="color: black;background-color: greenyellow;">
+        Predicted Yield Production(hg/ha): <br>
+        {{predicted_value}}
+      </h1>
+      {% endif %}
+
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm" crossorigin="anonymous"></script>
+  </body>
+</html>
